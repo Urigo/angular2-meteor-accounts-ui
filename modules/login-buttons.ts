@@ -1,6 +1,3 @@
-import 'es6-promise'
-import 'es6-shim'
-import 'reflect-metadata';
 import {Component, View, NgZone} from 'angular2/core';
 import {NgIf, NgFor} from 'angular2/common';
 import {Accounts} from 'meteor/accounts-base';
