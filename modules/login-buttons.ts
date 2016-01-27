@@ -2,7 +2,7 @@ import {Component, View, NgZone} from 'angular2/core';
 import {NgIf, NgFor} from 'angular2/common';
 import {Accounts} from 'meteor/accounts-base';
 import {Tracker} from 'meteor/tracker';
-import {TEMPLATE} from './login-buttons-template.ts';
+import {TEMPLATE} from './login-buttons-template';
 
 export interface LoginCredentials {
   email : string;
