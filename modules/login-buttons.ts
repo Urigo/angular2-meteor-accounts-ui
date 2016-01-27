@@ -14,7 +14,7 @@ export interface LoginCredentials {
   moduleId: Meteor.absoluteUrl(module.id)
 })
 @View({
-  templateUrl: TEMPLATE,
+  template: TEMPLATE,
   directives: [NgIf, NgFor]
 })
 export class LoginButtons {
