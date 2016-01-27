@@ -2,7 +2,7 @@ import {Component, View, NgZone} from 'angular2/core';
 import {NgIf, NgFor} from 'angular2/common';
 import {Accounts} from 'meteor/accounts-base';
 import {Tracker} from 'meteor/tracker';
-import './login-buttons.html';
+import {TEMPLATE} from './login-buttons-template.ts';
 
 export interface LoginCredentials {
   email : string;
@@ -14,7 +14,7 @@ export interface LoginCredentials {
   moduleId: Meteor.absoluteUrl(module.id)
 })
 @View({
-  templateUrl: 'login-buttons.html',
+  templateUrl: TEMPLATE,
   directives: [NgIf, NgFor]
 })
 export class LoginButtons {

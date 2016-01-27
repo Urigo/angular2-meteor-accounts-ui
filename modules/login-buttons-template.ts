@@ -1,3 +1,4 @@
+export const TEMPLATE = `
 <div class="login-buttons">
   <div class="dropdown-toggle" [hidden]="isDropdownOpen" (click)="isDropdownOpen=true">
     <span *ngIf="isLoggedIn">
@@ -54,4 +55,4 @@
       </form>
     </div>
   </div>
-</div>
+</div>`
