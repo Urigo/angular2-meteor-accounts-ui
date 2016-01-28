@@ -21,10 +21,6 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader'
-      },
-      {
-        test: /\.less$/,
-        loader: "style!css!less"
       }
     ]
   }
