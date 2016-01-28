@@ -1,7 +1,5 @@
 node_modules
-/*.js
 /*.ts
 /*.html
 /*.css
 /*.less
-!Gulp*

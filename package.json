@@ -6,17 +6,17 @@
   "author": "Angular2-Meteor (https://github.com/Urigo/angular2-meteor)",
   "license": "ISC",
   "scripts": {
-    "postinstall": "gulp build"
+    "postinstall": "webpack"
   },
   "dependencies": {
-    "gulp": "^3.9.0",
-    "gulp-flatten": "^0.2.0",
-    "gulp-less": "^3.0.5",
-    "gulp-typescript": "^2.10.0",
-    "gulp-util": "^3.0.7",
+    "css-loader": "^0.23.1",
+    "html-loader": "^0.4.0",
     "merge2": "^1.0.0",
+    "style-loader": "^0.13.0",
+    "ts-loader": "^0.8.0",
     "tsd": "^0.6.5",
-    "typescript": "^1.7.5"
+    "typescript": "^1.7.5",
+    "webpack": "^1.12.12"
   },
   "peerDependencies": {
     "angular2": "^2.0.0-beta.1",
@@ -30,6 +30,7 @@
     "angular2": "^2.0.0-beta.1",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
+    "less-loader": "^2.2.2",
     "reflect-metadata": "^0.1.2",
     "rxjs": "^5.0.0-beta.0",
     "zone.js": "^0.5.10"
