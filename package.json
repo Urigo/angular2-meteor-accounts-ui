@@ -9,7 +9,10 @@
     "install": "mv ./build/* ./"
   },
   "main": "index.js",
-  "dependencies": {
+  "peerDependencies": {
+    "angular2": "^2.0.0-beta.3"
+  },
+  "devDependencies": {
     "css-loader": "^0.23.1",
     "html-loader": "^0.4.0",
     "merge2": "^1.0.0",
@@ -18,22 +21,5 @@
     "tsd": "^0.6.5",
     "typescript": "^1.7.5",
     "webpack": "^1.12.12"
-  },
-  "peerDependencies": {
-    "angular2": "^2.0.0-beta.1",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.3",
-    "reflect-metadata": "^0.1.2",
-    "rxjs": "^5.0.0-beta.0",
-    "zone.js": "^0.5.10"
-  },
-  "devDependencies": {
-    "angular2": "^2.0.0-beta.1",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.3",
-    "less-loader": "^2.2.2",
-    "reflect-metadata": "^0.1.2",
-    "rxjs": "^5.0.0-beta.0",
-    "zone.js": "^0.5.10"
   }
 }
