@@ -10,7 +10,7 @@
   },
   "main": "index.js",
   "peerDependencies": {
-    "angular2": "^2.0.0-beta.0"
+    "angular2": ">=2.0.0-beta.0"
   },
   "devDependencies": {
     "css-loader": "^0.23.1",
