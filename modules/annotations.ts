@@ -1,7 +1,7 @@
 import {TypeDecorator} from 'angular2/core';
 import {makeDecorator} from 'angular2/src/core/util/decorators';
 import {ComponentInstruction} from 'angular2/router';
-import {CanActivate} from 'angular2/src/router/lifecycle_annotations_impl';
+import {CanActivate} from 'angular2/src/router/lifecycle/lifecycle_annotations_impl';
 
 class InjectUserAnnotation {
   constructor(public propName: string = 'user') {}
@@ -18,11 +18,9 @@ export function InjectUser(propName: string): (cls: any) => any {
         if (!this[injected]) {
           this[fieldName] = Meteor.user();
           if (this.autorun) {
-            Meteor.setTimeout(() => {
-              this.autorun(() => {
-                this[fieldName] = Meteor.user();
-              }, true)
-            }, 0);
+            this.autorun(() => {
+              this[fieldName] = Meteor.user();
+            }, true);
           }
           this[injected] = true;
         }
