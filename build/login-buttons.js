@@ -169,9 +169,7 @@
 	    LoginButtons = __decorate([
 	        core_1.Component({
 	            selector: 'login-buttons',
-	            moduleId: Meteor.absoluteUrl(module.id)
-	        }),
-	        core_1.View({
+	            moduleId: Meteor.absoluteUrl(module.id),
 	            template: __webpack_require__(14),
 	            directives: [common_1.NgIf, common_1.NgFor]
 	        }), 
@@ -524,7 +522,6 @@
 	function applyToTag(styleElement, obj) {
 		var css = obj.css;
 		var media = obj.media;
-		var sourceMap = obj.sourceMap;
 
 		if(media) {
 			styleElement.setAttribute("media", media)
@@ -542,7 +539,6 @@
 
 	function updateLink(linkElement, obj) {
 		var css = obj.css;
-		var media = obj.media;
 		var sourceMap = obj.sourceMap;
 
 		if(sourceMap) {
