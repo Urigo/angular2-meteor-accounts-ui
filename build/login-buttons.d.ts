@@ -1,4 +1,4 @@
-import { NgZone } from 'angular2/core';
+import { NgZone } from '@angular/core';
 import { Tracker } from 'meteor/tracker';
 export interface LoginCredentials {
     email: string;

@@ -58,6 +58,7 @@
 	var common_1 = __webpack_require__(7);
 	var accounts_base_1 = __webpack_require__(8);
 	var tracker_1 = __webpack_require__(9);
+	var meteor_1 = __webpack_require__(3);
 	__webpack_require__(10);
 	var LoginButtons = (function () {
 	    function LoginButtons(zone) {
@@ -99,7 +100,7 @@
 	        this.resetErrors();
 	        var email = this.credentials.email;
 	        var password = this.credentials.password;
-	        Meteor.loginWithPassword(email, password, function (error) {
+	        meteor_1.Meteor.loginWithPassword(email, password, function (error) {
 	            if (error) {
 	                _this.errors.push(error.reason || "Unknown error");
 	            }
@@ -124,7 +125,7 @@
 	        });
 	    };
 	    LoginButtons.prototype.logout = function () {
-	        Meteor.logout();
+	        meteor_1.Meteor.logout();
 	        this.isDropdownOpen = false;
 	    };
 	    LoginButtons.prototype.signup = function () {
@@ -159,17 +160,17 @@
 	        var _this = this;
 	        this.autorunComputation = tracker_1.Tracker.autorun(function () {
 	            _this.zone.run(function () {
-	                _this.currentUser = Meteor.user();
-	                _this.currentUserId = Meteor.userId();
-	                _this.isLoggingIn = Meteor.loggingIn();
-	                _this.isLoggedIn = !!Meteor.user();
+	                _this.currentUser = meteor_1.Meteor.user();
+	                _this.currentUserId = meteor_1.Meteor.userId();
+	                _this.isLoggingIn = meteor_1.Meteor.loggingIn();
+	                _this.isLoggedIn = !!meteor_1.Meteor.user();
 	            });
 	        });
 	    };
 	    LoginButtons = __decorate([
 	        core_1.Component({
 	            selector: 'login-buttons',
-	            moduleId: Meteor.absoluteUrl(module.id),
+	            moduleId: meteor_1.Meteor.absoluteUrl(module.id),
 	            template: __webpack_require__(14),
 	            directives: [common_1.NgIf, common_1.NgFor]
 	        }), 
@@ -183,19 +184,24 @@
 /***/ },
 /* 1 */,
 /* 2 */,
-/* 3 */,
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = require("meteor/meteor");
+
+/***/ },
 /* 4 */,
 /* 5 */,
 /* 6 */
 /***/ function(module, exports) {
 
-	module.exports = require("angular2/core");
+	module.exports = require("@angular/core");
 
 /***/ },
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = require("angular2/common");
+	module.exports = require("@angular/common");
 
 /***/ },
 /* 8 */
@@ -561,7 +567,7 @@
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"login-buttons\">\n  <div class=\"dropdown-toggle\" [hidden]=\"isDropdownOpen\" (click)=\"isDropdownOpen=true\">\n    <span *ngIf=\"isLoggedIn\">\n      {{ displayName() }} ▾\n    </span>\n    <span *ngIf=\"!isLoggedIn\">\n      Login ▾\n    </span>\n  </div>\n  <div class=\"content-container\" [hidden]=\"!isDropdownOpen\">\n    <div class=\"accounts-close\" (click)=\"isDropdownOpen=false\">Close</div>\n    <div *ngIf=\"isLoggedIn\">\n      <div class=\"login-text-and-button\">\n        <div class=\"login-display-name\">\n          {{ displayName() }}\n        </div>\n        <a class=\"login-buttons-logout\" (click)=\"logout()\" href=\"#\">Sign Out</a>\n      </div>\n    </div>\n    <div *ngIf=\"!isLoggedIn\">\n      <span [hidden]=\"!isLoggingIn\">Please wait...</span>\n      <form class=\"login-buttons-login-form\" [hidden]=\"isLoggingIn\">\n        <div *ngIf=\"message == ''\">\n\n          <label for=\"email\">Email</label>\n          <input class=\"login-buttons-email-input form-control\" type=\"email\" required [(ngModel)]=\"credentials.email\"/>\n          <div [hidden]=\"isPasswordRecovery\">\n            <label for=\"password\">Password</label>\n            <input class=\"login-buttons-password-input form-control\" type=\"password\" required\n                   [(ngModel)]=\"credentials.password\"/>\n          </div>\n        </div>\n        <br/>\n        <ul [hidden]=\"!errors || errors.length == 0\">\n          <li *ngFor=\"#error of errors\">\n            {{ error }}\n          </li>\n        </ul>\n        {{ message }}\n        <div *ngIf=\"message == ''\">\n          <button *ngIf=\"!isPasswordRecovery && !isSignup\" class=\"login-button-login\" (click)=\"login()\">Login</button>\n          <button *ngIf=\"!isPasswordRecovery && isSignup\" class=\"login-button-signup\" (click)=\"signup()\">Signup\n          </button>\n          <!--<button *ngIf=\"isPasswordRecovery && !isSignup\" class=\"login-button-recover\" (click)=\"recover()\">Recover-->\n          <!--</button>-->\n        </div>\n        <br/>\n        <a [hidden]=\"isSignup\" class=\"signup-button\" (click)=\"isSignup=true; isPasswordRecovery=false; resetErrors();\"\n           href=\"#\">Signup</a>\n        <!--<a [hidden]=\"isPasswordRecovery\" class=\"recover-button\"-->\n        <!--(click)=\"isPasswordRecovery=true; isSignup=false; resetErrors();\" href=\"#\">Recover Password</a>-->\n        <a [hidden]=\"!isSignup && !isPasswordRecovery\" class=\"login-button\"\n           (click)=\"isPasswordRecovery=false; isSignup=false; resetErrors();\" href=\"#\">Back to Login</a>\n      </form>\n    </div>\n  </div>\n</div>";
+	module.exports = "<div class=\"login-buttons\">\n  <div class=\"dropdown-toggle\" [hidden]=\"isDropdownOpen\" (click)=\"isDropdownOpen=true\">\n    <span *ngIf=\"isLoggedIn\">\n      {{ displayName() }} ▾\n    </span>\n    <span *ngIf=\"!isLoggedIn\">\n      Login ▾\n    </span>\n  </div>\n  <div class=\"content-container\" [hidden]=\"!isDropdownOpen\">\n    <div class=\"accounts-close\" (click)=\"isDropdownOpen=false\">Close</div>\n    <div *ngIf=\"isLoggedIn\">\n      <div class=\"login-text-and-button\">\n        <div class=\"login-display-name\">\n          {{ displayName() }}\n        </div>\n        <a class=\"login-buttons-logout\" (click)=\"logout()\" href=\"#\">Sign Out</a>\n      </div>\n    </div>\n    <div *ngIf=\"!isLoggedIn\">\n      <span [hidden]=\"!isLoggingIn\">Please wait...</span>\n      <form class=\"login-buttons-login-form\" [hidden]=\"isLoggingIn\">\n        <div *ngIf=\"message == ''\">\n\n          <label for=\"email\">Email</label>\n          <input class=\"login-buttons-email-input form-control\" type=\"email\" required [(ngModel)]=\"credentials.email\"/>\n          <div [hidden]=\"isPasswordRecovery\">\n            <label for=\"password\">Password</label>\n            <input class=\"login-buttons-password-input form-control\" type=\"password\" required\n                   [(ngModel)]=\"credentials.password\"/>\n          </div>\n        </div>\n        <br/>\n        <ul [hidden]=\"!errors || errors.length == 0\">\n          <li *ngFor=\"let error of errors\">\n            {{ error }}\n          </li>\n        </ul>\n        {{ message }}\n        <div *ngIf=\"message == ''\">\n          <button *ngIf=\"!isPasswordRecovery && !isSignup\" class=\"login-button-login\" (click)=\"login()\">Login</button>\n          <button *ngIf=\"!isPasswordRecovery && isSignup\" class=\"login-button-signup\" (click)=\"signup()\">Signup\n          </button>\n          <!--<button *ngIf=\"isPasswordRecovery && !isSignup\" class=\"login-button-recover\" (click)=\"recover()\">Recover-->\n          <!--</button>-->\n        </div>\n        <br/>\n        <a [hidden]=\"isSignup\" class=\"signup-button\" (click)=\"isSignup=true; isPasswordRecovery=false; resetErrors();\"\n           href=\"#\">Signup</a>\n        <!--<a [hidden]=\"isPasswordRecovery\" class=\"recover-button\"-->\n        <!--(click)=\"isPasswordRecovery=true; isSignup=false; resetErrors();\" href=\"#\">Recover Password</a>-->\n        <a [hidden]=\"!isSignup && !isPasswordRecovery\" class=\"login-button\"\n           (click)=\"isPasswordRecovery=false; isSignup=false; resetErrors();\" href=\"#\">Back to Login</a>\n      </form>\n    </div>\n  </div>\n</div>";
 
 /***/ }
 /******/ ])));

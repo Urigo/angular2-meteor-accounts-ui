@@ -32,7 +32,7 @@
         </div>
         <br/>
         <ul [hidden]="!errors || errors.length == 0">
-          <li *ngFor="#error of errors">
+          <li *ngFor="let error of errors">
             {{ error }}
           </li>
         </ul>

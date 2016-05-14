@@ -1,7 +1,8 @@
-import {TypeDecorator} from 'angular2/core';
-import {makeDecorator} from 'angular2/src/core/util/decorators';
-import {ComponentInstruction} from 'angular2/router';
-import {CanActivate} from 'angular2/src/router/lifecycle/lifecycle_annotations_impl';
+import {TypeDecorator} from '@angular/core';
+import {makeDecorator} from '@angular/core/src/util/decorators';
+import {ComponentInstruction} from '@angular/router-deprecated';
+import {CanActivate} from '@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl';
+import {Meteor} from 'meteor/meteor';
 
 class InjectUserAnnotation {
   constructor(public propName: string = 'user') {}

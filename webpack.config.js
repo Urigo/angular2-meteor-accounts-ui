@@ -18,13 +18,14 @@ module.exports = {
     {
       './login-buttons': './login-buttons',
       './annotations': './annotations',
-      'angular2/core': 'angular2/core',
-      'angular2/common': 'angular2/common',
-      'angular2/src/router/lifecycle_annotations_impl': 'angular2/src/router/lifecycle_annotations_impl',
-      'angular2/router': 'angular2/router',
-      'angular2/src/core/util/decorators': 'angular2/src/core/util/decorators',
+      '@angular/core': '@angular/core',
+      '@angular/common': '@angular/common',
+      '@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl': '@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl',
+      '@angular/router-deprecated': '@angular/router-deprecated',
+      '@angular/core/src/util/decorators': '@angular/core/src/util/decorators',
       'meteor/accounts-base': 'meteor/accounts-base',
-      'meteor/tracker': 'meteor/tracker'
+      'meteor/tracker': 'meteor/tracker',
+      'meteor/meteor': 'meteor/meteor'
     }
   ],
   module: {
