@@ -7,6 +7,7 @@ var git = require("gulp-git");
 var fs = require("fs");
 var less = require('gulp-less');
 var tap = require('gulp-tap');
+var ext_replace = require('gulp-ext-replace');
 
 // Build TypeScript.
 gulp.task("tsbuild", function(callback) {
@@ -29,6 +30,12 @@ gulp.task('pages',  function () {
     .pipe(gulp.dest('./build/'));
 });
 
+gulp.task('scss',  function () {
+  gulp.src('./build/*.css', {base: './build/'})
+    .pipe(ext_replace('.scss'))
+    .pipe(gulp.dest('./build/'));
+});
+
 // Build LESS
 gulp.task('less', function () {
   return gulp.src('./modules/*.less')
@@ -43,5 +50,5 @@ gulp.task("git-add", function(){
 });
 
 gulp.task("build", function(callback) {
-  runSequence("tsbuild", "pages", "less", "git-add", callback);
+  runSequence("tsbuild", "pages", "less", "scss", "git-add", callback);
 });
