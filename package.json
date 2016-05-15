@@ -6,7 +6,6 @@
   "author": "Angular2-Meteor (https://github.com/Urigo/angular2-meteor)",
   "license": "MIT",
   "scripts": {
-    "install": "node install.js"
   },
   "main": "build/index.js",
   "peerDependencies": {
