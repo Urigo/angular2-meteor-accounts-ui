@@ -7,7 +7,22 @@
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "declaration": true
-  }
+    "sourceMap": false,
+    "declaration": true,
+    "outDir": "./build",
+    "rootDir": "./modules"
+  },
+  "filesGlob": [
+    "modules/**/*.ts"
+  ],
+  "files": [
+    "modules/bootstrap.ts",
+    "modules/index.ts",
+    "typings/main.d.ts"
+  ],
+  "exclude": [
+    "examples",
+    "node_modules",
+    "atmosphere-packages"
+  ]
 }

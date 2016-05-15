@@ -1,6 +1,5 @@
 node_modules
 /*.ts
-/*.js
 /*.html
 /*.css
 /*.less

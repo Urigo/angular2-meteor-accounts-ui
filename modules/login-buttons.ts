@@ -4,17 +4,17 @@ import {Accounts} from 'meteor/accounts-base';
 import {Tracker} from 'meteor/tracker';
 import {Meteor} from 'meteor/meteor';
 
-require('style!css!less!./login-buttons.less');
-
 export interface LoginCredentials {
   email : string;
   password : string;
 }
 
+const LOGIN_TEMPLATE = `{LOGIN_TEMPLATE}`;
+
 @Component({
   selector: 'login-buttons',
   moduleId: Meteor.absoluteUrl(module.id),
-  template: require('html!./login-buttons-template.html'),
+  template: LOGIN_TEMPLATE,
   directives: [NgIf, NgFor]
 })
 export class LoginButtons {
