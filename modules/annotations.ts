@@ -8,12 +8,12 @@ class InjectUserAnnotation {
   constructor(public propName: string = 'user') {}
 }
 
-export function InjectUser(propName: string): (cls: any) => any {
-  var annInstance = new InjectUserAnnotation(propName);
-  var TypeDecorator: TypeDecorator = <TypeDecorator>function TypeDecorator(cls) {
-    var propName = annInstance.propName;
-    var fieldName = `_${propName}`;
-    var injected = `${fieldName}Injected`;
+export function InjectUser(propName?: string): (cls: any) => any {
+  const annInstance = new InjectUserAnnotation(propName);
+  const TypeDecorator: TypeDecorator = <TypeDecorator>function TypeDecorator(cls) {
+    const propName = annInstance.propName;
+    const fieldName = `_${propName}`;
+    const injected = `${fieldName}Injected`;
     Object.defineProperty(cls.prototype, propName, {
       get: function() {
         if (!this[injected]) {
