@@ -4,3 +4,5 @@ node_modules
 /*.css
 /*.less
 !webpack.config.js
+npm-debug.log
+typings

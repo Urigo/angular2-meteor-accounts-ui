@@ -1,5 +1,6 @@
 import { NgZone } from '@angular/core';
 import { Tracker } from 'meteor/tracker';
+import { Meteor } from 'meteor/meteor';
 export interface LoginCredentials {
     email: string;
     password: string;
@@ -7,7 +8,7 @@ export interface LoginCredentials {
 export declare class LoginButtons {
     private zone;
     autorunComputation: Tracker.Computation;
-    currentUser: Object;
+    currentUser: Meteor.User;
     currentUserId: string;
     isLoggingIn: boolean;
     isLoggedIn: boolean;
