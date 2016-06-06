@@ -43,11 +43,6 @@ function InjectUser(propName) {
 }
 exports.InjectUser = InjectUser;
 ;
-/**
- * Here CanActivate is an internal class (not present in the typings)
- * defined at angular/modules/angular2/src/router/lifecycle_annotations_impl.ts.
- * Each annotation designed to implement activation logic should extend it.
- */
 var RequireUserAnnotation = (function (_super) {
     __extends(RequireUserAnnotation, _super);
     function RequireUserAnnotation() {
