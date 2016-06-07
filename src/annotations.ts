@@ -1,8 +1,22 @@
-import {TypeDecorator} from '@angular/core';
-import {makeDecorator} from '@angular/core/src/util/decorators';
-import {ComponentInstruction} from '@angular/router-deprecated';
-import {CanActivate} from '@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl';
-import {Meteor} from 'meteor/meteor';
+import {
+  TypeDecorator
+} from '@angular/core';
+
+import {
+  makeDecorator
+} from '@angular/core/src/util/decorators';
+
+import {
+  ComponentInstruction
+} from '@angular/router-deprecated';
+
+import {
+  CanActivate
+} from '@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl';
+
+import {
+  Meteor
+} from 'meteor/meteor';
 
 class InjectUserAnnotation {
   constructor(public propName: string = 'user') {}
@@ -14,6 +28,7 @@ export function InjectUser(propName?: string): (cls: any) => any {
     const propName = annInstance.propName;
     const fieldName = `_${propName}`;
     const injected = `${fieldName}Injected`;
+
     Object.defineProperty(cls.prototype, propName, {
       get: function() {
         if (!this[injected]) {
@@ -37,7 +52,7 @@ export function InjectUser(propName?: string): (cls: any) => any {
 
 /**
  * Here CanActivate is an internal class (not present in the typings)
- * defined at angular/modules/angular2/src/router/lifecycle_annotations_impl.ts.
+ * defined at angular/modules/@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl.ts
  * Each annotation designed to implement activation logic should extend it.
  */
 class RequireUserAnnotation extends CanActivate {

@@ -1,12 +1,29 @@
-import {Component, NgZone} from '@angular/core';
-import {NgIf, NgFor} from '@angular/common';
-import {Accounts} from 'meteor/accounts-base';
-import {Tracker} from 'meteor/tracker';
-import {Meteor} from 'meteor/meteor';
+import {
+  Component, NgZone
+} from '@angular/core';
+
+import {
+  NgIf,
+  NgFor
+} from '@angular/common';
+
+import {
+  Accounts
+} from 'meteor/accounts-base';
+
+import {
+  Tracker
+} from 'meteor/tracker';
+
+import {
+  Meteor
+} from 'meteor/meteor';
+
+declare var Package;
 
 export interface LoginCredentials {
-  email : string;
-  password : string;
+  email: string;
+  password: string;
 }
 
 const LOGIN_TEMPLATE = `{LOGIN_TEMPLATE}`;
@@ -18,20 +35,20 @@ const LOGIN_TEMPLATE = `{LOGIN_TEMPLATE}`;
   directives: [NgIf, NgFor]
 })
 export class LoginButtons {
-  autorunComputation:Tracker.Computation;
-  currentUser:Object;
-  currentUserId:string;
-  isLoggingIn:boolean;
-  isLoggedIn:boolean;
-  services:Array<any>;
-  credentials:LoginCredentials;
-  errors:Array<string>;
-  isPasswordRecovery:boolean;
-  isSignup:boolean;
-  isDropdownOpen:boolean;
-  message:string;
+  autorunComputation: Tracker.Computation;
+  currentUser: Meteor.User;
+  currentUserId: string;
+  isLoggingIn: boolean;
+  isLoggedIn: boolean;
+  services: Array<any>;
+  credentials: LoginCredentials;
+  errors: Array<string>;
+  isPasswordRecovery: boolean;
+  isSignup: boolean;
+  isDropdownOpen: boolean;
+  message: string;
 
-  constructor(private zone:NgZone) {
+  constructor(private zone: NgZone) {
     this._initAutorun();
     this.services = this._getLoginServices();
     this.resetErrors();
@@ -42,7 +59,7 @@ export class LoginButtons {
   }
 
   _resetCredentialsFields() {
-    this.credentials = {email: '', password: ''};
+    this.credentials = { email: '', password: '' };
   }
 
   resetErrors() {
@@ -50,13 +67,13 @@ export class LoginButtons {
     this.message = "";
   }
 
-  singleService():Object {
+  singleService(): Object {
     let services = this._getLoginServices();
 
     return services[0];
   }
 
-  displayName():string {
+  displayName(): string {
     let user = this.currentUser;
 
     if (!user)
@@ -74,11 +91,11 @@ export class LoginButtons {
     return '';
   };
 
-  login():void {
+  login(): void {
     this.resetErrors();
 
-    let email:string = this.credentials.email;
-    let password:string = this.credentials.password;
+    let email: string = this.credentials.email;
+    let password: string = this.credentials.password;
 
     Meteor.loginWithPassword(email, password, (error) => {
       if (error) {
@@ -94,7 +111,7 @@ export class LoginButtons {
   recover() {
     this.resetErrors();
 
-    Accounts.forgotPassword({email: this.credentials.email}, (error) => {
+    Accounts.forgotPassword({ email: this.credentials.email }, (error) => {
       if (error) {
         this.errors.push(error.reason || "Unknown error");
       }
@@ -106,12 +123,12 @@ export class LoginButtons {
     });
   }
 
-  logout():void {
+  logout(): void {
     Meteor.logout();
     this.isDropdownOpen = false;
   }
 
-  signup():void {
+  signup(): void {
     this.resetErrors();
 
     Accounts.createUser(this.credentials, (error) => {
@@ -125,27 +142,27 @@ export class LoginButtons {
     });
   }
 
-  _hasPasswordService():boolean {
+  _hasPasswordService(): boolean {
     return !!Package['accounts-password'];
   }
 
-  _getLoginServices():Array<any> {
+  _getLoginServices(): Array<any> {
     let services = Package['accounts-oauth'] ? Accounts.oauth.serviceNames() : [];
     services.sort();
 
     if (this._hasPasswordService())
       services.push('password');
 
-    return _.map(services, function (name) {
-      return {name: name};
+    return _.map(services, function(name) {
+      return { name: name };
     });
   }
 
-  dropdown():boolean {
+  dropdown(): boolean {
     return this._hasPasswordService() || this._getLoginServices().length > 1;
   }
 
-  _initAutorun():void {
+  _initAutorun(): void {
     this.autorunComputation = Tracker.autorun(() => {
       this.zone.run(() => {
         this.currentUser = Meteor.user();
