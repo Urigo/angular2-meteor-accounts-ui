@@ -12,6 +12,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
+  "files": [
+    "typings/index.d.ts"
+  ],
   "exclude": [
     "build",
     "node_modules",

@@ -52,15 +52,16 @@ export function InjectUser(propName?: string): (cls: any) => any {
  * defined at angular/modules/@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl.ts
  * Each annotation designed to implement activation logic should extend it.
  */
-class RequireUserAnnotation implements CanActivate {
-  constructor() {
-    super(this.canProceed.bind(this));
-  }
-
-  canActivate (next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-      return !!Meteor.user();
-
-  }
-}
-
-export const RequireUser = makeDecorator(RequireUserAnnotation);
+//  export class RequireUserAnnotation extends CanActivate {
+//    constructor() {
+//     super();
+//    }
+//
+//
+//      canActivate (){
+//        return !!Meteor.user();
+//
+//    }
+//  }
+//
+// export const RequireUser = makeDecorator(RequireUserAnnotation);
