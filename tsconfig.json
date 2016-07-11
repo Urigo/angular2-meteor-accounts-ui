@@ -12,6 +12,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
+  "filesGlob": [
+    "src/**/*.ts"
+  ],
   "exclude": [
     "build",
     "node_modules",
