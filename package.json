@@ -9,8 +9,8 @@
     "add": "gulp git-add",
     "build:html": "gulp pages",
     "build:styles": "gulp less && gulp scss",
-    "build:js": "tsc",
-    "build": "npm run build:html && npm run build:styles && npm run build:js",
+    "build:js": "tsc; exit 0",
+    "build": "npm run build:js && npm run build:html && npm run build:styles",
     "postbuild": "npm run add",
     "prepublish": "npm run build"
   },

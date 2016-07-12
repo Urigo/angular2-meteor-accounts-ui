@@ -12,13 +12,24 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "filesGlob": [
-    "src/**/*.ts"
+  "files": [
+    "src/annotations.ts",
+    "src/index",
+    "src/login-buttons",
+    "typings/index.d.ts"
   ],
   "exclude": [
     "build",
     "node_modules",
     "typings/main",
-    "typings/main.d.ts"
+    "typings/main.d.ts",
+    "node_modules",
+    "/node_modules",
+    "../node_modules",
+    "*node_modules*",
+    "/node_modules*",
+    "angular2",
+    "rxjs",
+    "typings"
   ]
 }
