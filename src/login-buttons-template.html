@@ -23,10 +23,10 @@
         <div *ngIf="message == ''">
 
           <label for="email">Email</label>
-          <input class="login-buttons-email-input form-control" type="email" required [(ngModel)]="credentials.email"/>
+          <input class="login-buttons-email-input form-control" type="email" name= "email" required [(ngModel)]="credentials.email"/>
           <div [hidden]="isPasswordRecovery">
             <label for="password">Password</label>
-            <input class="login-buttons-password-input form-control" type="password" required
+            <input class="login-buttons-password-input form-control" type="password" name="password" required
                    [(ngModel)]="credentials.password"/>
           </div>
         </div>
