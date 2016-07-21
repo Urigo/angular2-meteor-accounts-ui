@@ -14,7 +14,7 @@
         <div class="login-display-name">
           {{ displayName() }}
         </div>
-        <a class="login-buttons-logout" (click)="logout()" href="#">Sign Out</a>
+        <a class="login-buttons-logout" (click)="logout()">Sign Out</a>
       </div>
     </div>
     <div *ngIf="!isLoggedIn">
@@ -45,12 +45,11 @@
           <!--</button>-->
         </div>
         <br/>
-        <a [hidden]="isSignup" class="signup-button" (click)="isSignup=true; isPasswordRecovery=false; resetErrors();"
-           href="#">Signup</a>
+        <a [hidden]="isSignup" class="signup-button" (click)="isSignup=true; isPasswordRecovery=false; resetErrors();">Signup</a>
         <!--<a [hidden]="isPasswordRecovery" class="recover-button"-->
         <!--(click)="isPasswordRecovery=true; isSignup=false; resetErrors();" href="#">Recover Password</a>-->
         <a [hidden]="!isSignup && !isPasswordRecovery" class="login-button"
-           (click)="isPasswordRecovery=false; isSignup=false; resetErrors();" href="#">Back to Login</a>
+           (click)="isPasswordRecovery=false; isSignup=false; resetErrors();">Back to Login</a>
       </form>
     </div>
   </div>
