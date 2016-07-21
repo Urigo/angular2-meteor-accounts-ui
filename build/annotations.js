@@ -1,5 +1,4 @@
 "use strict";
-var decorators_1 = require('@angular/core/src/util/decorators');
 var meteor_1 = require('meteor/meteor');
 var InjectUserAnnotation = (function () {
     function InjectUserAnnotation(propName) {
@@ -37,18 +36,16 @@ function InjectUser(propName) {
 }
 exports.InjectUser = InjectUser;
 /**
- * Here CanActivate is an internal class (not present in the typings)
- * defined at angular/modules/@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl.ts
- * Each annotation designed to implement activation logic should extend it.
+ * A service to use as auth guard on the route.
+ *
  */
-var RequireUserAnnotation = (function () {
-    function RequireUserAnnotation() {
-        _super.call(this, this.canProceed.bind(this));
+var AuthGuard = (function () {
+    function AuthGuard() {
     }
-    RequireUserAnnotation.prototype.canActivate = function (next, state) {
+    AuthGuard.prototype.canActivate = function () {
         return !!meteor_1.Meteor.user();
     };
-    return RequireUserAnnotation;
+    return AuthGuard;
 }());
-exports.RequireUser = decorators_1.makeDecorator(RequireUserAnnotation);
+exports.AuthGuard = AuthGuard;
 //# sourceMappingURL=annotations.js.map
