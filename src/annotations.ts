@@ -1,11 +1,6 @@
 import {
-  TypeDecorator, OnInit
+  TypeDecorator
 } from '@angular/core';
-
-import {
-  makeDecorator
-} from '@angular/core/src/util/decorators';
-
 
 import {
   CanActivate
@@ -14,8 +9,6 @@ import {
 import {
   Meteor
 } from 'meteor/meteor';
-
-
 
 class InjectUserAnnotation {
   constructor(public propName: string = 'user') {}

@@ -74,7 +74,7 @@ export class LoginButtons {
   }
 
   displayName(): string {
-    let user = this.currentUser;
+    let user : any = this.currentUser;
 
     if (!user)
       return '';
