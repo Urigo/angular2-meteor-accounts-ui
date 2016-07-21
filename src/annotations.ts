@@ -8,12 +8,14 @@ import {
 
 
 import {
-  CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot
+  CanActivate
 } from '@angular/router';
 
 import {
   Meteor
 } from 'meteor/meteor';
+
+
 
 class InjectUserAnnotation {
   constructor(public propName: string = 'user') {}
@@ -47,20 +49,18 @@ export function InjectUser(propName?: string): (cls: any) => any {
   return TypeDecorator;
 }
 
+
+
 /**
- * Here CanActivate is an internal class (not present in the typings)
- * defined at angular/modules/@angular/router-deprecated/src/lifecycle/lifecycle_annotations_impl.ts
- * Each annotation designed to implement activation logic should extend it.
+ * A service to use as auth guard on the route.
+ *
  */
-class RequireUserAnnotation implements CanActivate {
-  constructor() {
-    super(this.canProceed.bind(this));
-  }
+ export class AuthGuard implements CanActivate {
 
-  canActivate (next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-      return !!Meteor.user();
+     canActivate (){
+       return !!Meteor.user();
 
-  }
-}
+   }
+ }
 
-export const RequireUser = makeDecorator(RequireUserAnnotation);
+
