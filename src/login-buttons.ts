@@ -1,23 +1,7 @@
-import {
-  Component, NgZone
-} from '@angular/core';
-
-import {
-  NgIf,
-  NgFor
-} from '@angular/common';
-
-import {
-  Accounts
-} from 'meteor/accounts-base';
-
-import {
-  Tracker
-} from 'meteor/tracker';
-
-import {
-  Meteor
-} from 'meteor/meteor';
+import { Component, NgZone } from '@angular/core'; 
+import { Accounts } from 'meteor/accounts-base';
+import { Tracker } from 'meteor/tracker';
+import { Meteor } from 'meteor/meteor';
 
 declare var Package;
 
@@ -31,8 +15,7 @@ const LOGIN_TEMPLATE = `{LOGIN_TEMPLATE}`;
 @Component({
   selector: 'login-buttons',
   moduleId: Meteor.absoluteUrl(module.id),
-  template: LOGIN_TEMPLATE,
-  directives: [NgIf, NgFor]
+  template: LOGIN_TEMPLATE
 })
 export class LoginButtons {
   autorunComputation: Tracker.Computation;

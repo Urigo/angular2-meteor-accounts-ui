@@ -3,6 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
+    "lib": ["es6", "dom"],
     "outDir": "./build",
     "rootDir": "./src",
     "sourceMap": true,
@@ -17,19 +18,5 @@
     "src/index",
     "src/login-buttons",
     "typings/index.d.ts"
-  ],
-  "exclude": [
-    "build",
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts",
-    "node_modules",
-    "/node_modules",
-    "../node_modules",
-    "*node_modules*",
-    "/node_modules*",
-    "angular2",
-    "rxjs",
-    "typings"
   ]
 }
