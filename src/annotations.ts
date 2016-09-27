@@ -25,11 +25,24 @@ export function InjectUser(propName?: string): (cls: any) => any {
       get: function() {
         if (!this[injected]) {
           this[fieldName] = Meteor.user();
+          
+          // If uses MeteorReactive / MeteorComponent
           if (this.autorun) {
             this.autorun(() => {
               this[fieldName] = Meteor.user();
             }, true);
           }
+          // If uses MeteorReactive or nothing
+          else {
+            let zone = Zone.current;
+            
+            Tracker.autorun(() => {
+               zone.run(() => {
+                 this[fieldName] = Meteor.user();
+               });
+            });
+          }
+          
           this[injected] = true;
         }
         return this[fieldName];
