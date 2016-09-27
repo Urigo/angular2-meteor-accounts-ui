@@ -18,10 +18,19 @@ function InjectUser(propName) {
                 var _this = this;
                 if (!this[injected]) {
                     this[fieldName] = meteor_1.Meteor.user();
+                    // If uses MeteorReactive / MeteorComponent
                     if (this.autorun) {
                         this.autorun(function () {
                             _this[fieldName] = meteor_1.Meteor.user();
                         }, true);
+                    }
+                    else {
+                        var zone_1 = Zone.current;
+                        Tracker.autorun(function () {
+                            zone_1.run(function () {
+                                _this[fieldName] = meteor_1.Meteor.user();
+                            });
+                        });
                     }
                     this[injected] = true;
                 }
