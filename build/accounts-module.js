@@ -3,6 +3,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var login_buttons_1 = require('./login-buttons');
+var annotations_1 = require("./annotations");
 var AccountsModule = (function () {
     function AccountsModule() {
     }
@@ -14,6 +15,9 @@ var AccountsModule = (function () {
             ],
             declarations: [
                 login_buttons_1.LoginButtons
+            ],
+            providers: [
+                annotations_1.AuthGuard
             ],
             exports: [
                 login_buttons_1.LoginButtons

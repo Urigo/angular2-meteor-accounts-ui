@@ -11,7 +11,8 @@ import {
 } from 'meteor/meteor';
 
 class InjectUserAnnotation {
-  constructor(public propName: string = 'user') {}
+  constructor(public propName: string = 'user') {
+  }
 }
 
 export function InjectUser(propName?: string): (cls: any) => any {
@@ -22,10 +23,10 @@ export function InjectUser(propName?: string): (cls: any) => any {
     const injected = `${fieldName}Injected`;
 
     Object.defineProperty(cls.prototype, propName, {
-      get: function() {
+      get: function () {
         if (!this[injected]) {
           this[fieldName] = Meteor.user();
-          
+
           // If uses MeteorReactive / MeteorComponent
           if (this.autorun) {
             this.autorun(() => {
@@ -35,14 +36,14 @@ export function InjectUser(propName?: string): (cls: any) => any {
           // If uses MeteorReactive or nothing
           else {
             let zone = Zone.current;
-            
+
             Tracker.autorun(() => {
-               zone.run(() => {
-                 this[fieldName] = Meteor.user();
-               });
+              zone.run(() => {
+                this[fieldName] = Meteor.user();
+              });
             });
           }
-          
+
           this[injected] = true;
         }
         return this[fieldName];
@@ -56,17 +57,12 @@ export function InjectUser(propName?: string): (cls: any) => any {
 }
 
 
-
 /**
  * A service to use as auth guard on the route.
  *
  */
- export class AuthGuard implements CanActivate {
-
-     canActivate (){
-       return !!Meteor.user();
-
-   }
- }
-
-
+export class AuthGuard implements CanActivate {
+  canActivate() {
+    return !!Meteor.user();
+  }
+}
