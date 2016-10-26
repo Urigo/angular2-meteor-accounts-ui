@@ -1,22 +1,27 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "es2015",
     "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "lib": ["es6", "dom"],
-    "outDir": "./build",
-    "rootDir": "./src",
-    "sourceMap": true,
-    "declaration": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "sourceMap": false,
+    "noEmitHelpers": true,
+    "declaration": true,
+    "outDir": "./build",
+    "rootDir": "./src"
   },
   "files": [
-    "src/annotations.ts",
-    "src/index",
-    "src/login-buttons",
-    "typings/index.d.ts"
+    "typings.d.ts",
+    "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
