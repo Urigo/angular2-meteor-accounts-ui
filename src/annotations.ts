@@ -61,12 +61,21 @@ export function InjectUser(propName?: string): (cls: any) => any {
  * A service to use as auth guard on the route.
  *
  */
- export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
 
-     canActivate (){
-       return !!Meteor.user();
-
-   }
- }
-
-
+	canActivate():Observable<boolean> {
+		let subject = new Subject<boolean>();
+		/*
+ 		 * Wait until Meteor isn't actively logging in to
+		 * decide that we're logged in or not.
+		 */
+		Tracker.autorun((c) => {
+			if (!Meteor.loggingIn()) {
+				subject.next(!!Meteor.user());
+				subject.complete();
+				c.stop();
+			}
+		});
+		return subject.asObservable();
+	}
+}
