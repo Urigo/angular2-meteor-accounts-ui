@@ -1,5 +1,7 @@
 "use strict";
 var meteor_1 = require('meteor/meteor');
+var rxjs_1 = require("rxjs");
+var tracker_1 = require("meteor/tracker");
 var InjectUserAnnotation = (function () {
     function InjectUserAnnotation(propName) {
         if (propName === void 0) { propName = 'user'; }
@@ -26,7 +28,7 @@ function InjectUser(propName) {
                     }
                     else {
                         var zone_1 = Zone.current;
-                        Tracker.autorun(function () {
+                        tracker_1.Tracker.autorun(function () {
                             zone_1.run(function () {
                                 _this[fieldName] = meteor_1.Meteor.user();
                             });
@@ -52,7 +54,19 @@ var AuthGuard = (function () {
     function AuthGuard() {
     }
     AuthGuard.prototype.canActivate = function () {
-        return !!meteor_1.Meteor.user();
+        var subject = new rxjs_1.Subject();
+        /*
+         * Wait until Meteor isn't actively logging in to
+         * decide that we're logged in or not.
+         */
+        tracker_1.Tracker.autorun(function (c) {
+            if (!meteor_1.Meteor.loggingIn()) {
+                subject.next(!!meteor_1.Meteor.user());
+                subject.complete();
+                c.stop();
+            }
+        });
+        return subject.asObservable();
     };
     return AuthGuard;
 }());
