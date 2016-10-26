@@ -1,7 +1,7 @@
 import {TypeDecorator} from '@angular/core';
 import {CanActivate} from '@angular/router';
 import {Meteor} from 'meteor/meteor';
-import {Observable, Subject} from "rxjs";
+import {Observable, Subject, ReplaySubject, Observer} from "rxjs";
 import {Tracker} from "meteor/tracker";
 
 class InjectUserAnnotation {
@@ -57,19 +57,14 @@ export function InjectUser(propName?: string): (cls: any) => any {
  */
 export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean> {
-    let subject = new Subject<boolean>();
-    /*
-     * Wait until Meteor isn't actively logging in to
-     * decide that we're logged in or not.
-     */
-    Tracker.autorun((c) => {
-      if (!Meteor.loggingIn()) {
-        subject.next(!!Meteor.user());
-        subject.complete();
-        c.stop();
-      }
+    return Observable.create((observer: Observer) => {
+      Tracker.autorun((c) => {
+        if (!Meteor.loggingIn()) {
+          observer.next(!!Meteor.user());
+          observer.complete();
+          c.stop();
+        }
+      });
     });
-
-    return subject.asObservable();
   }
 }
