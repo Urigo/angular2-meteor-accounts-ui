@@ -6,7 +6,7 @@
   "author": "Angular2-Meteor (https://github.com/Urigo/angular2-meteor)",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc; exit 0"
   },
   "main": "build/index.js",
   "typings": "build/index.d.ts",

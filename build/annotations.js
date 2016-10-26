@@ -1,4 +1,5 @@
-import { Meteor } from 'meteor/meteor';
+"use strict";
+var meteor_1 = require('meteor/meteor');
 var InjectUserAnnotation = (function () {
     function InjectUserAnnotation(propName) {
         if (propName === void 0) { propName = 'user'; }
@@ -6,7 +7,7 @@ var InjectUserAnnotation = (function () {
     }
     return InjectUserAnnotation;
 }());
-export function InjectUser(propName) {
+function InjectUser(propName) {
     var annInstance = new InjectUserAnnotation(propName);
     var TypeDecorator = function TypeDecorator(cls) {
         var propName = annInstance.propName;
@@ -16,18 +17,18 @@ export function InjectUser(propName) {
             get: function () {
                 var _this = this;
                 if (!this[injected]) {
-                    this[fieldName] = Meteor.user();
+                    this[fieldName] = meteor_1.Meteor.user();
                     // If uses MeteorReactive / MeteorComponent
                     if (this.autorun) {
                         this.autorun(function () {
-                            _this[fieldName] = Meteor.user();
+                            _this[fieldName] = meteor_1.Meteor.user();
                         }, true);
                     }
                     else {
                         var zone_1 = Zone.current;
                         Tracker.autorun(function () {
                             zone_1.run(function () {
-                                _this[fieldName] = Meteor.user();
+                                _this[fieldName] = meteor_1.Meteor.user();
                             });
                         });
                     }
@@ -42,15 +43,17 @@ export function InjectUser(propName) {
     };
     return TypeDecorator;
 }
+exports.InjectUser = InjectUser;
 /**
  * A service to use as auth guard on the route.
  *
  */
-export var AuthGuard = (function () {
+var AuthGuard = (function () {
     function AuthGuard() {
     }
     AuthGuard.prototype.canActivate = function () {
-        return !!Meteor.user();
+        return !!meteor_1.Meteor.user();
     };
     return AuthGuard;
 }());
+exports.AuthGuard = AuthGuard;

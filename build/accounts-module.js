@@ -1,24 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { LoginButtons } from './login-buttons';
-export var AccountsModule = (function () {
+"use strict";
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
+var login_buttons_1 = require('./login-buttons');
+var AccountsModule = (function () {
     function AccountsModule() {
     }
     AccountsModule = __decorate([
-        NgModule({
+        core_1.NgModule({
             imports: [
-                CommonModule,
-                FormsModule
+                common_1.CommonModule,
+                forms_1.FormsModule
             ],
             declarations: [
-                LoginButtons
+                login_buttons_1.LoginButtons
             ],
             exports: [
-                LoginButtons
+                login_buttons_1.LoginButtons
             ]
         }), 
         __metadata('design:paramtypes', [])
     ], AccountsModule);
     return AccountsModule;
 }());
+exports.AccountsModule = AccountsModule;
