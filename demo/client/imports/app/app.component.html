@@ -1,0 +1,16 @@
+<div>
+  <h1>Angular2-Meteor-accounts-ui Demo</h1>
+  <div>
+    <h3>login-buttons example:</h3>
+    <login-buttons></login-buttons>
+  </div>
+  <div>
+    <h3>Current login status (Using @InjectUser)</h3>
+    <span *ngIf="!user">Not logged in</span>
+    <span *ngIf="user && user.emails">Email:  {{ user.emails[0].address }}</span>
+  </div>
+  <div>
+    <h3>Protected route example</h3>
+    <a routerLink="/guarded">/guarded</a> - you can access only if logged in
+  </div>
+</div>
