@@ -19,7 +19,8 @@
   },
   "files": [
     "typings.d.ts",
-    "src/index.ts"
+    "src/index.ts",
+    "src/server.ts"
   ],
   "exclude": [
     "node_modules"
