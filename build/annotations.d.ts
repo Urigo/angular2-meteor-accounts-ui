@@ -1,5 +1,5 @@
 import { CanActivate } from '@angular/router';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 export declare function InjectUser(propName?: string): (cls: any) => any;
 /**
  * A service to use as auth guard on the route.

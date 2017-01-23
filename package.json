@@ -6,18 +6,26 @@
   "author": "Angular2-Meteor (https://github.com/Urigo/angular2-meteor)",
   "license": "MIT",
   "scripts": {
-    "build": "tsc; exit 0"
+    "build:aot": "node_modules/.bin/ngc",
+    "build": "tsc && npm run bundle",
+    "prepublish": "npm run build && npm run build:aot",
+    "rollup": "rollup -i ./build/index.js -o ./build/bundles/index.umd.js -n ng.accounts.meteor -c rollup.config.js",
+    "bundle": "npm run rollup"
   },
-  "main": "build/index.js",
+  "main": "build/bundles/index.umd.js",
   "typings": "build/index.d.ts",
+  "module": "build/index.js",
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/common": "^2.0.0"
+    "@angular/core": "^2.4.3",
+    "@angular/common": "^2.4.3"
   },
   "devDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0",
+    "@angular/common": "^2.4.3",
+    "@angular/compiler": "^2.4.3",
+    "@angular/compiler-cli": "^2.4.3",
+    "@angular/core": "^2.4.3",
+    "@angular/forms": "^2.4.3",
+    "@angular/platform-browser": "2.4.3",
     "@angular/router": "^3.0.0",
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.39",
@@ -26,11 +34,15 @@
     "angular2-meteor-polyfills": "^0.1.1",
     "meteor-typings": "^1.3.1",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "5.0.3",
     "tslint": "^3.6.0",
-    "typescript": "2.0.0",
+    "typescript": "^2.0.10",
     "typings": "^1.3.0",
-    "zone.js": "^0.6.23"
+    "zone.js": "^0.7.2",
+    "rollup": "^0.38.0",
+    "rollup-plugin-babel": "^2.6.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "meteor-typings": "^1.3.1"
+  }
 }
