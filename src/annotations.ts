@@ -1,13 +1,15 @@
 import {TypeDecorator} from '@angular/core';
 import {CanActivate} from '@angular/router';
 import {Meteor} from 'meteor/meteor';
-import {Observable, Subject, ReplaySubject, Observer} from "rxjs";
-import {Tracker} from "meteor/tracker";
+import {Observable, Subject, ReplaySubject, Observer} from 'rxjs';
+import {Tracker} from 'meteor/tracker';
 
 class InjectUserAnnotation {
   constructor(public propName: string = 'user') {
   }
 }
+  
+declare const Zone;
 
 export function InjectUser(propName?: string): (cls: any) => any {
   const annInstance = new InjectUserAnnotation(propName);
@@ -57,7 +59,7 @@ export function InjectUser(propName?: string): (cls: any) => any {
  */
 export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean> {
-    return Observable.create((observer: Observer) => {
+    return Observable.create((observer: Observer<any>) => {
       Tracker.autorun((c) => {
         if (!Meteor.loggingIn()) {
           observer.next(!!Meteor.user());

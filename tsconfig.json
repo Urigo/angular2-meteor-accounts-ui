@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "module": "commonjs",
+    "module": "es2015",
     "target": "es5",
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
@@ -15,13 +12,17 @@
     "noEmitHelpers": true,
     "declaration": true,
     "outDir": "./build",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "types": ["meteor-typings", "zone.js"]
   },
   "files": [
-    "typings.d.ts",
     "src/index.ts"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "skipMetadataEmit" : false
+  }
 }

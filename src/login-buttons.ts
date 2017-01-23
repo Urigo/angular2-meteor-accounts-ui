@@ -1,7 +1,7 @@
-import { Component, NgZone } from '@angular/core'; 
-import { Accounts } from 'meteor/accounts-base';
-import { Tracker } from 'meteor/tracker';
-import { Meteor } from 'meteor/meteor';
+import {Component, NgZone} from '@angular/core'; 
+import {Accounts} from 'meteor/accounts-base';
+import {Tracker} from 'meteor/tracker';
+import {Meteor} from 'meteor/meteor';
 
 declare var Package;
 declare var _;
@@ -259,14 +259,14 @@ export class LoginButtons {
   }
 
   _getLoginServices(): Array<any> {
-    let services = Package['accounts-oauth'] ? Accounts.oauth.serviceNames() : [];
+    let services = Package['accounts-oauth'] ? Accounts['oauth'].serviceNames() : [];
     services.sort();
 
     if (this._hasPasswordService())
       services.push('password');
 
     return _.map(services, function(name) {
-      return { name: name };
+      return { name };
     });
   }
 
